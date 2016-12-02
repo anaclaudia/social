@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 
-  validates(:firstname, presence: true, length: { maximum: 30 })
-  validates(:lastname, presence: true, length: { maximum: 30 })
+#  attr_accessor :firstname, :lastname, :website
+
+  validates(:firstname, presence: true, length: { maximum: 15 })
+  validates(:lastname, presence: true, length: { maximum: 20 })
 
 end

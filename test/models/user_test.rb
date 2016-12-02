@@ -11,7 +11,22 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "fisrtname should be present" do
-    @user.firstname = ""
+    @user.firstname = "  "
+    assert_not @user.valid?
+  end
+
+  test "lastname should be present" do
+    @user.lastname = " "
+    assert_not @user.valid?
+  end
+
+  test "firstname shouldn't be greater than 15 characteres" do
+    @user.firstname = "b"  * 16
+    assert_not @user.valid?
+  end
+
+  test "lastname shouldn't be greater than 20 characteres" do
+    @user.lastname = "b" * 21
     assert_not @user.valid?
   end
 
