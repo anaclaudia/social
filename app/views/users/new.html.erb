@@ -2,18 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <%= stylesheet_link_tag "users", media: "all" %>
     <title>New Profile</title>
   </head>
   <body>
     <div id="main">
     <h1>New Profile</h1>
-      <form>
-        <input type="text" name="firstname" placeholder="First name">
-        <input type="text" name="lastname" placeholder="Last name">
-        <input type="text" name="website" placeholder="Website">
-        <input class="submit-button" type="submit" value="Sign up">
-      </form>
+      <%= form_for (@user) do |f| %>
+        <%= render 'shared/error_messages' %>
+        <%= f.text_field :firstname, placeholder: "First name", class: "form-control" %>
+        <%= f.text_field :lastname, placeholder: "Last name", class: "form-control" %>
+        <%= f.text_field :website, placeholder: "Website", class: "form-control" %>
+        <%= f.submit "Sign up", class: "submit-button" %>
+      <% end %>
      </div>
   </body>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset='UTF-8'> 
+   <%= stylesheet_link_tag "users", media: "all" %>
+  </head>
+  <body>
+    <div id="main">
+      <div id="container">
+          <% flash.each do |message_type, message| %>
+            <div id="alert-<%= message_type %>">
+              <%= message %>
+            </div>
+          <% end %>
+      </div>
+      <h1><%= @user.firstname %> <%= @user.lastname %></h1> 
+      <h2>Personal website:</h2>
+        <ul>
+          <li><%= @user.website %></li>
+        </ul>
+      <h2>Website Headings</h2>
+        <ul>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      <h2><%= @user.firstname %>'s Friends</h2>
+        <ul>
+          <li>Mika</li>
+          <li>Mikael</li>
+        </ul>
+    </div>
+  </body>
+</html>
