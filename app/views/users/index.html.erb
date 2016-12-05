@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"> 
+    <%= stylesheet_link_tag "users", media: "all" %>
+    <title>Welcome to the Social</title>
+  </head>
+  <body>
+    <div id="main">
+      <h1>Look who has joined us!</h1>
+        <% @users.each do |user| %>
+          <ul>
+            <li><%= user.firstname %> <%= user.lastname %><%= link_to 'Show', user_path(user) %></li>
+          </ul>
+        <% end %>
+        <%= link_to 'Sign in', new_user_path %>
+    </div>
+  </body>
+</html>
+
