@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  
+  before_save { self.website = website.downcase }
 
   validates(:firstname, presence: true, length: { maximum: 15 })
   validates(:lastname, presence: true, length: { maximum: 20 })
