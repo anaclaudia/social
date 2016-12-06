@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.take(5)
+    @users = User.last(5)
   end
 
   def show
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :website)
+    params.require(:user).permit(:firstname, :lastname, :password, :password_confirmation, :website)
   end
 
 end
