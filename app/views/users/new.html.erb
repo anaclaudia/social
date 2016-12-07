@@ -12,6 +12,8 @@
         <%= render 'shared/error_messages' %>
         <%= f.text_field :firstname, placeholder: "First name", class: "form-control" %>
         <%= f.text_field :lastname, placeholder: "Last name", class: "form-control" %>
+        <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control" %>
         <%= f.text_field :website, placeholder: "Website", class: "form-control" %>
         <%= f.submit "Sign up", class: "submit-button" %>
       <% end %>

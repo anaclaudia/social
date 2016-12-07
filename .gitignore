@@ -18,3 +18,5 @@
 
 # Ignore swap files
 *.swp
+# Ignore lock files
+*.lock
