@@ -2,7 +2,18 @@ require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
   
-  
+  def setup
+    @user = users(:rafael)
+  end
+
+  test "login with valid information" do
+    get login_path
+    post login_path params: { session: { website: @user.website, password: 'R@faEl_*&And3rS0n'  }}
+    assert_redirected_to @user
+    follow_redirect!
+    assert_template 'users/show'
+  end
+
   test "login with invalid information" do
     get login_path
     assert_template 'sessions/new'
