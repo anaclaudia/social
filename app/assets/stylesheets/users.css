@@ -19,7 +19,7 @@ h1 {
   font-size: 40px;
   line-height: 36px;
   color: black;
-  font-weight: 100;
+  font-weight: 200;
 }
 
 h2 {
@@ -50,7 +50,7 @@ input {
 }
 
 li {
-  margin: 5px 0 5px 0;
+  margin: 2px 0 2px 0;
   font-family: Helvetica,Arial,sans-serif;
 }
 
@@ -58,6 +58,7 @@ a {
   margin: 0 auto;
   display: inline-block;
   padding: 4px;
+  color: #1b95e0;
   font-weight: 100;
 }
 
@@ -88,4 +89,37 @@ a {
   margin: 0 0 15px 0;
   padding: 13px;
   border-radius: 4px;
+}
+
+.box-page{
+  background-color: #fff;
+  border-radius: 6px;
+  width: 500px;
+  margin: 100px auto;
+  border-radius: 6px;
+  border: 1px solid rgba(0,0,0,0.1);
+  font-family: Helvetica, sans-serif, Arial;
+}  
+
+.title-box {
+  margin: 20px 40px 20px 40px;
+  font-size: 34px;
+  font-weight: 500;
+}
+
+#list-box-page {
+  margin-left: 30px;
+}
+
+.footpage {
+  background-color: #f4f4f4;
+  color: #8899a6;
+  line-height: 13px;
+  width: 362px;
+  height: 62px;
+  padding: 2px 12px 12px 126px; 
+  font-size: 13px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+
 }
