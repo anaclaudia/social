@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-    render 'new'
   end
 
   def create
@@ -8,7 +7,7 @@ class SessionsController < ApplicationController
     if 
       user && user.autenticate(params[:session][:password])
     else
-      flash[:danger] = "Invalid email or password!"
+      flash.now[:danger] = "Invalid email or password!"
       render 'new'
     end
   end
