@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
 
   before_save { self.website = website.downcase }
 
@@ -17,4 +18,15 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
+  def follow(some_user)
+    active_relationships.create(followed_id: some_user.id)
+  end
+
+  def unfollow(some_user)
+    active_relationships.find_by(followed_id: some_user.id).destroy
+  end
+
+  def following?(some_user)
+    following.include?(some_user)
+  end
 end
