@@ -13,21 +13,33 @@
             </div>
           <% end %>
       </div>
-      <h1><%= @user.firstname %> <%= @user.lastname %></h1> 
-      <h2>Personal website:</h2>
-        <ul>
-          <li><%= @user.website %></li>
+      <% if logged_in? %>
+        <ul class="dropdown">
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Account</a>
+            <div class="dropdown-content">
+              <%= link_to "Profile", current_user %>
+              <%= link_to "Settings", "#" %>
+              <%= link_to "Log out", logout_path, method: "delete" %>
+            </div>
+          </li>
         </ul>
-      <h2>Website Headings</h2>
-        <ul>
-          <li>About</li>
-          <li>Contact</li>
-        </ul>
-      <h2><%= @user.firstname %>'s Friends</h2>
-        <ul>
-          <li>Mika</li>
-          <li>Mikael</li>
-        </ul>
+      <% end %>
+        <h1><%= @user.firstname %> <%= @user.lastname %></h1> 
+          <h2>Personal website:</h2>
+            <ul>
+            <li><%= @user.website %></li>
+          </ul>
+        <h2>Website Headings</h2>
+          <ul>
+            <li>About</li>
+            <li>Contact</li>
+          </ul>
+        <h2><%= @user.firstname %>'s Friends</h2>
+          <ul>
+            <li>Mika</li>
+            <li>Mikael</li>
+          </ul>
       <%= link_to 'Back', root_path %>
     </div>
   </body>
