@@ -5,3 +5,9 @@ rafael:
   lastname: Anderson
   password_digest: <%= User.digest('R@faEl_*&And3rS0n') %>
   website: www.rafa.com.br
+
+nicolas:
+  firstname: Nicolas
+  lastname: Gomes
+  password_digest: <%= User.digest('Nicol@S!@#$%G0m#s')
+  website: www.nicolas.com
