@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
-  before_save { self.website = website.downcase }
+  before_save :downcase_website!
 
   validates(:firstname, presence: true, length: { maximum: 15 })
   validates(:lastname, presence: true, length: { maximum: 20 })
@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  def User.digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
@@ -32,5 +32,11 @@ class User < ApplicationRecord
 
   def following?(some_user)
     following.include?(some_user)
+  end
+  
+  private
+  
+  def dowcase_website!
+    self.website = website.downcase
   end
 end

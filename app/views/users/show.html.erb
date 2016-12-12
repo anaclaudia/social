@@ -14,6 +14,7 @@
           <% end %>
       </div>
       <% if logged_in? %>
+        <%= render 'follow_form' %>
         <ul class="dropdown">
           <li class="dropdown">
             <a href="#" class="dropbtn">Account</a>
@@ -35,11 +36,22 @@
             <li>About</li>
             <li>Contact</li>
           </ul>
-        <h2><%= @user.firstname %>'s Friends</h2>
-          <ul>
-            <li>Mika</li>
-            <li>Mikael</li>
-          </ul>
+        <% if logged_in? %>
+          <div class="stats">
+            <a href="<%= following_user_path %>">
+              <strong id="following" class="stat">
+                <%= @user.following.count %>
+              </strong>
+              following
+            </a>
+            <a href="<%= followers_user_path(@user) %>">
+              <strong id="followers" class="stat">
+                <%= @user.followers.count %>
+              </strong>
+              followers
+            </a>
+          </div>
+        <% end %>
       <%= link_to 'Back', root_path %>
     </div>
   </body>

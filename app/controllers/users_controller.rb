@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
   end
@@ -10,12 +9,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
+    @relationship = current_user.active_relationships.find_by(followed_id: @user.id)
+
+    @new_relationship = current_user.active_relationships.build
   end
 
   def create
     @user = User.new(user_params)
+
     if @user.save
       log_in @user
+
       flash[:success] = "User created!"
       redirect_to @user
     else
@@ -23,9 +28,9 @@ class UsersController < ApplicationController
     end
   end
 
-private
+  private
+
   def user_params
     params.require(:user).permit(:firstname, :lastname, :password, :password_confirmation, :website)
   end
-
 end
