@@ -36,7 +36,7 @@ class User < ApplicationRecord
   
   private
   
-  def dowcase_website!
+  def downcase_website!
     self.website = website.downcase
   end
 end
