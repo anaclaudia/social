@@ -33,9 +33,10 @@
           </ul>
         <h2>Website Headings</h2>
           <ul>
-            <li>About</li>
-            <li>Contact</li>
-          </ul>
+            <% @links.each do |link| %>
+              <li><%= link %></li>
+            <% end %>
+          </ul>  
         <% if logged_in? %>
           <div class="stats">
             <a href="<%= following_user_path %>">

@@ -10,9 +10,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     
+    @links = Website.parse(@user.website)
+
     if current_user
       @relationship = current_user.active_relationships.find_by(followed_id: @user.id)
-
       @new_relationship = current_user.active_relationships.build
     end
   end
