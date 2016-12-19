@@ -18,6 +18,7 @@
         <%= f.password_field :password, placeholder: "Password" %>
         <%= f.submit "Log in", class: "submit-button" %>
       <% end %>
+        <p>New user? <%= link_to "Sign up now", new_user_path %></p>
     </div>
   </body>
 </html>
