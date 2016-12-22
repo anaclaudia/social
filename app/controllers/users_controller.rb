@@ -25,8 +25,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     
-    @links = Website.parse(@user.website)
-
     if current_user
       @relationship = current_user.active_relationships.find_by(followed_id: @user.id)
       @new_relationship = current_user.active_relationships.build
@@ -48,6 +46,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :password, :password_confirmation, :website)
+    params.require(:user).permit(:firstname, :lastname, :password, :password_confirmation, :website, :posts)
   end
 end

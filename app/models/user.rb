@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   before_save :downcase_website!
+  before_save :update_posts!
 
   validates(:firstname, presence: true, length: { maximum: 15 })
   validates(:lastname, presence: true, length: { maximum: 20 })
@@ -38,6 +39,11 @@ class User < ApplicationRecord
   
   private
   
+  def update_posts!
+    posts = Website.parse(self.website)
+    self.posts = posts
+  end
+
   def downcase_website!
     self.website = website.downcase
   end

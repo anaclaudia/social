@@ -32,9 +32,8 @@
             <li><%= @user.website %></li>
           </ul>
         <h2>Website Headings</h2>
-          <ul>
-            <% @links.each do |link| %>
-              <li><%= link %></li>
+            <% @user.posts.each do |post| %>
+              <li><%= post %></li>
             <% end %>
           </ul>  
         <% if logged_in? %>
