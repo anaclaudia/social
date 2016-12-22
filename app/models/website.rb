@@ -7,7 +7,7 @@ class Website
     begin
       page = Nokogiri::HTML(open(page_url, :allow_redirections => :all))
       links =  page.css("body").css("a")
-      
+
       links.map do |link|
         link.text
       end

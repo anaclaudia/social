@@ -15,8 +15,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+		@user = UserUpdateCommand.update!(@user, user_params)
 
-    if @user.update_attributes(user_params)
+		if @user.valid?
       flash[:success] = "Update success!"
       redirect_to @user
     else
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    
+
     if current_user
       @relationship = current_user.active_relationships.find_by(followed_id: @user.id)
       @new_relationship = current_user.active_relationships.build
@@ -35,8 +36,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+		@user = UserCreateCommand.create!(@user)
 
-    if @user.save
+		if @user.valid?
       log_in @user
       flash[:success] = "User created!"
       redirect_to @user

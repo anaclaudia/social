@@ -1,15 +1,14 @@
 class User < ApplicationRecord
-  
+
   serialize :posts, Array
 
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
-  
+
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
   before_save :downcase_website!
-  before_save :update_posts!
 
   validates(:firstname, presence: true, length: { maximum: 15 })
   validates(:lastname, presence: true, length: { maximum: 20 })
@@ -36,13 +35,8 @@ class User < ApplicationRecord
   def following?(some_user)
     following.include?(some_user)
   end
-  
+
   private
-  
-  def update_posts!
-    posts = Website.parse(self.website)
-    self.posts = posts
-  end
 
   def downcase_website!
     self.website = website.downcase
