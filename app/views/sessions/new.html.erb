@@ -1,24 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UFT-8">
-    <%= stylesheet_link_tag "users", media: "all" %>
-    <title>Log In</title>
-  </head>
-  <body>
-    <div id="main">
-      <h1>Log in</h1>
-      <% flash.each do |message_type, message| %>
-        <div id="alert-<%= message_type %>">
-          <%= message %>
-        </div>
-      <% end %>
-      <%= form_for(:session, url: login_path) do |f| %>
-        <%= f.text_field :website, placeholder: "Website" %>
-        <%= f.password_field :password, placeholder: "Password" %>
-        <%= f.submit "Log in", class: "submit-button" %>
-      <% end %>
-        <p>New user? <%= link_to "Sign up now", new_user_path %></p>
-    </div>
-  </body>
-</html>
+<div id="main">
+	<h1>Log in</h1>
+	<% flash.each do |message_type, message| %>
+		<div id="alert-<%= message_type %>">
+			<%= message %>
+		</div>
+	<% end %>
+	<%= form_for(:session, url: login_path) do |f| %>
+		<%= f.text_field :website, placeholder: "Website" %>
+		<%= f.password_field :password, placeholder: "Password" %>
+		<%= f.submit "Log in", class: "submit-button" %>
+	<% end %>
+	<p>New user? <%= link_to "Sign up now", new_user_path %></p>
+</div>

@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8"> 
-    <%= stylesheet_link_tag "users", media: "all" %>
-    <title>Welcome to the Social</title>
-  </head>
-  <body>
-    <div class="box-page">
-      <h1 class="title-box">Look who has joined us!</h1>
-        <% @users.each do |user| %>
-          <ul>
-            <li id="list-box-page"><%= user.firstname %> <%= user.lastname %><%= link_to 'Show', user_path(user) %></li>
-          </ul>
-        <% end %>
-        <div class="footpage">
-          <p>New user? <%= link_to 'Sign up now', new_user_path %></p>
-          <p>Already have a login? <%= link_to 'Log in', login_path %></p>
-        </div>
-    </div>
-  </body>
-</html>
-
+<div class="box-page">
+	<h1 class="title-box">Look who has joined us!</h1>
+	<% @users.each do |user| %>
+		<ul>
+			<li id="list-box-page"><%= user.firstname %> <%= user.lastname %><%= link_to 'Show', user_path(user) %></li>
+		</ul>
+	<% end %>
+	<div class="footpage">
+		<p>New user? <%= link_to 'Sign up now', new_user_path %></p>
+		<p>Already have a login? <%= link_to 'Log in', login_path %></p>
+	</div>
+</div>

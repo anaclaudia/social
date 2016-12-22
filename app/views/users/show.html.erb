@@ -1,59 +1,51 @@
-<!DOCTYPE html>
-<html>
-  <head>
-   <meta charset='UTF-8'> 
-   <%= stylesheet_link_tag "users", media: "all" %>
-  </head>
-  <body>
-    <div id="main">
-      <div id="container">
-          <% flash.each do |message_type, message| %>
-            <div id="alert-<%= message_type %>">
-              <%= message %>
-            </div>
-          <% end %>
-      </div>
-      <% if logged_in? %>
-        <%= render 'follow_form' %>
-        <ul class="dropdown">
-          <li class="dropdown">
-            <a href="#" class="dropbtn">Account</a>
-            <div class="dropdown-content">
-              <%= link_to "Profile", current_user %>
-              <%= link_to "Settings", edit_user_path(current_user) %>
-              <%= link_to "Delete Account", @user, method: :delete, data: { confirm: "Are you sure?" } %>
-              <%= link_to "Log out", logout_path, method: "delete" %>
-            </div>
-          </li>
-        </ul>
-      <% end %>
-        <h1><%= @user.firstname %> <%= @user.lastname %></h1> 
-          <h2>Personal website:</h2>
-            <ul>
-            <li><%= @user.website %></li>
-          </ul>
-        <h2>Website Headings</h2>
-            <% @user.posts.each do |post| %>
-              <li><%= post %></li>
-            <% end %>
-          </ul>  
-        <% if logged_in? %>
-          <div class="stats">
-            <a href="<%= following_user_path %>">
-              <strong id="following" class="stat">
-                <%= @user.following.count %>
-              </strong>
-              following
-            </a>
-            <a href="<%= followers_user_path(@user) %>">
-              <strong id="followers" class="stat">
-                <%= @user.followers.count %>
-              </strong>
-              followers
-            </a>
-          </div>
-        <% end %>
-      <%= link_to 'Back', root_path %>
-    </div>
-  </body>
-</html>
+<div id="main">
+	<div id="container">
+		<% flash.each do |message_type, message| %>
+			<div id="alert-<%= message_type %>">
+				<%= message %>
+			</div>
+		<% end %>
+	</div>
+	<% if logged_in? %>
+		<%= render 'follow_form' %>
+		<ul class="dropdown">
+			<li class="dropdown">
+			<a href="#" class="dropbtn">Account</a>
+			<div class="dropdown-content">
+				<%= link_to "Profile", current_user %>
+				<%= link_to "Settings", edit_user_path(current_user) %>
+				<%= link_to "Delete Account", @user, method: :delete, data: { confirm: "Are you sure?" } %>
+				<%= link_to "Log out", logout_path, method: "delete" %>
+			</div>
+			</li>
+		</ul>
+	<% end %>
+	<h1><%= @user.firstname %> <%= @user.lastname %></h1> 
+	<h2>Personal website:</h2>
+	<ul>
+		<li><%= @user.website %></li>
+	</ul>
+	<h2>Website Headings</h2>
+	<% @user.posts.each do |post| %>
+		<li><%= post %></li>
+	<% end %>
+</ul>  
+
+<% if logged_in? %>
+	<div class="stats">
+		<a href="<%= following_user_path %>">
+			<strong id="following" class="stat">
+				<%= @user.following.count %>
+			</strong>
+			following
+		</a>
+		<a href="<%= followers_user_path(@user) %>">
+			<strong id="followers" class="stat">
+				<%= @user.followers.count %>
+			</strong>
+			followers
+		</a>
+	</div>
+<% end %>
+
+<%= link_to 'Back', root_path %>
